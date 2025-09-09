@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Business Solutions</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --dark-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .bubble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            animation: float-up 15s infinite linear;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            padding: 1rem 0;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #1e293b !important;
+            position: relative;
+            transition: var(--transition-smooth);
+            margin: 0 0.8rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+        }
+
+        .nav-link:hover {
+            background: var(--glass-bg);
+            color: #667eea !important;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,0 1000,300 1000,1000 0,700"/><circle cx="200" cy="200" r="100" fill="rgba(255,255,255,0.03)"/><circle cx="800" cy="800" r="150" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .btn-gradient {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 18px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-gradient:hover::before {
+            left: 100%;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-glow);
+            color: #667eea;
+        }
+
+        .floating-3d {
+            animation: float3d 6s ease-in-out infinite;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            25% { transform: translateY(-20px) rotateY(5deg); }
+            50% { transform: translateY(-10px) rotateY(0deg); }
+            75% { transform: translateY(-15px) rotateY(-5deg); }
+        }
+
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem 2.5rem;
+            transition: var(--transition-smooth);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: var(--transition-smooth);
+        }
+
+        .glass-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-gradient);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255,255,255,0.3), transparent);
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .services-grid {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition-smooth);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.03;
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+
+        .testimonials {
+            background: var(--primary-gradient);
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--secondary-gradient);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .pricing {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition-smooth);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-15px) scale(1.05);
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        .price small {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .stats-counter {
+            background: var(--primary-gradient);
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .team {
+            background: white;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .team-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .team-avatar {
+            width: 100%;
+            height: 300px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .team-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: white;
+        }
+
+        .portfolio {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .portfolio-item {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition-smooth);
+            position: relative;
+            height: 300px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .cta {
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-social-link:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .section { padding: 80px 0; }
+            .pricing-card.featured { transform: none; }
+            .pricing-card.featured:hover { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="bubble-container" id="bubbleContainer"></div>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-rocket-takeoff me-2"></i>BYAFAQ
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home"><i class="bi bi-house me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services"><i class="bi bi-gear me-1"></i>Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio"><i class="bi bi-collection me-1"></i>Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team"><i class="bi bi-people me-1"></i>Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing"><i class="bi bi-tags me-1"></i>Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="bi bi-envelope me-1"></i>Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content animate-on-scroll">
+                        <h1>Transform Your Business Into Digital Excellence</h1>
+                        <p>We create cutting-edge solutions that drive exponential growth, enhance user experiences, and deliver measurable results that exceed expectations.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button class="btn btn-gradient btn-lg" onclick="scrollToSection('services')">
+                                <i class="bi bi-rocket me-2"></i>Get Started Now
+                            </button>
+                            <button class="btn btn-outline-light btn-lg" onclick="playDemo()">
+                                <i class="bi bi-play-circle me-2"></i>Watch Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <div class="floating-3d">
+                            <i class="bi bi-laptop" style="font-size: 20rem; color: rgba(255,255,255,0.1);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Revolutionary Features</h2>
+            <p class="section-subtitle animate-on-scroll">Discover the power of modern technology combined with innovative design to create extraordinary digital experiences.</p>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h3>Lightning Performance</h3>
+                        <p>Ultra-fast loading times under 1 second with advanced optimization techniques and cutting-edge caching strategies.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h3>Mobile-First Design</h3>
+                        <p>Perfectly responsive layouts that adapt seamlessly across all devices, ensuring optimal user experience everywhere.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3>Enterprise Security</h3>
+                        <p>Bank-grade security protocols with advanced encryption, real-time monitoring, and comprehensive threat protection.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h3>Advanced Analytics</h3>
+                        <p>Deep insights with AI-powered analytics, real-time dashboards, and predictive business intelligence tools.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h3>Infinite Customization</h3>
+                        <p>Unlimited design possibilities with modular architecture, brand-specific styling, and flexible component system.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3>24/7 Expert Support</h3>
+                        <p>Round-the-clock premium support from certified experts with instant response times and proactive monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section services-grid">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Premium Services</h2>
+            <p class="section-subtitle animate-on-scroll">Comprehensive solutions tailored to transform your business and accelerate digital growth.</p>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Custom web applications built with modern frameworks, scalable architecture, and performance optimization for maximum impact.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="bi bi-check-circle text-success me-2"></i>React & Next.js</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Node.js Backend</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Cloud Integration</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="bi bi-phone-vibrate"></i>
+                        </div>
+                        <h3>Mobile Applications</h3>
+                        <p>Native and cross-platform mobile apps that deliver exceptional user experiences with cutting-edge features and seamless performance.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="bi bi-check-circle text-success me-2"></i>iOS & Android</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>React Native</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>App Store Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="bi bi-brush"></i>
+                        </div>
+                        <h3>UI/UX Design</h3>
+                        <p>Stunning visual designs and intuitive user experiences that captivate audiences and drive engagement through strategic design thinking.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="bi bi-check-circle text-success me-2"></i>User Research</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Prototyping</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Design Systems</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+                        <h3>Cloud Solutions</h3>
+                        <p>Scalable cloud infrastructure and migration services that ensure reliability, security, and cost-effectiveness for your business operations.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="bi bi-check-circle text-success me-2"></i>AWS & Azure</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>DevOps Integration</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Auto-scaling</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <h3>AI Integration</h3>
+                        <p>Advanced artificial intelligence solutions including machine learning, chatbots, and automation to revolutionize your business processes.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Machine Learning</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Natural Language Processing</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Predictive Analytics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h3>Digital Marketing</h3>
+                        <p>Comprehensive digital marketing strategies including SEO, social media, and content marketing to maximize your online presence and ROI.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="bi bi-check-circle text-success me-2"></i>SEO Optimization</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Social Media Marketing</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>Content Strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section stats-counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number" data-count="1250">0</span>
+                        <span class="stat-label">Projects Delivered</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number" data-count="350">0</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number" data-count="85">0</span>
+                        <span class="stat-label">Team Experts</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number" data-count="99">0</span>
+                        <span class="stat-label">Success Rate %</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Outstanding Portfolio</h2>
+            <p class="section-subtitle animate-on-scroll">Explore our most successful projects that have transformed businesses and delivered exceptional results.</p>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <i class="bi bi-cart-check" style="font-size: 4rem; color: white;"></i>
+                        <div class="portfolio-overlay">
+                            <div class="text-white text-center">
+                                <h4>E-Commerce Platform</h4>
+                                <p>Modern shopping experience with AI recommendations</p>
+                                <button class="btn btn-outline-light">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <i class="bi bi-hospital" style="font-size: 4rem; color: white;"></i>
+                        <div class="portfolio-overlay">
+                            <div class="text-white text-center">
+                                <h4>Healthcare System</h4>
+                                <p>Complete patient management solution</p>
+                                <button class="btn btn-outline-light">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <i class="bi bi-bank" style="font-size: 4rem; color: white;"></i>
+                        <div class="portfolio-overlay">
+                            <div class="text-white text-center">
+                                <h4>Banking Application</h4>
+                                <p>Secure digital banking with blockchain integration</p>
+                                <button class="btn btn-outline-light">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <i class="bi bi-mortarboard" style="font-size: 4rem; color: white;"></i>
+                        <div class="portfolio-overlay">
+                            <div class="text-white text-center">
+                                <h4>Education Platform</h4>
+                                <p>Interactive learning management system</p>
+                                <button class="btn btn-outline-light">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <i class="bi bi-house-heart" style="font-size: 4rem; color: white;"></i>
+                        <div class="portfolio-overlay">
+                            <div class="text-white text-center">
+                                <h4>Real Estate Portal</h4>
+                                <p>Smart property search with VR tours</p>
+                                <button class="btn btn-outline-light">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <i class="bi bi-truck" style="font-size: 4rem; color: white;"></i>
+                        <div class="portfolio-overlay">
+                            <div class="text-white text-center">
+                                <h4>Logistics System</h4>
+                                <p>Advanced supply chain management solution</p>
+                                <button class="btn btn-outline-light">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title text-white animate-on-scroll">What Our Clients Say</h2>
+            <p class="section-subtitle text-white-50 animate-on-scroll">Real feedback from satisfied clients who have experienced remarkable growth with our solutions.</p>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-avatar">JD</div>
+                        <p>"The team delivered beyond our expectations. Our revenue increased by 300% within the first quarter after launch."</p>
+                        <h5>John Davis</h5>
+                        <small>CEO, TechStart Inc.</small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-avatar">SM</div>
+                        <p>"Exceptional quality and professional service. They transformed our outdated system into a modern, efficient platform."</p>
+                        <h5>Sarah Miller</h5>
+                        <small>CTO, Innovation Labs</small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-avatar">MJ</div>
+                        <p>"Their AI integration solution automated 80% of our processes, saving us thousands of hours monthly."</p>
+                        <h5>Michael Johnson</h5>
+                        <small>Operations Director, Global Corp</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section team">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Meet Our Expert Team</h2>
+            <p class="section-subtitle animate-on-scroll">Talented professionals dedicated to delivering exceptional results and innovative solutions for your business.</p>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card animate-on-scroll">
+                        <div class="team-avatar">AW</div>
+                        <div class="team-info">
+                            <h4>Alex Wilson</h4>
+                            <p class="text-muted">Lead Developer</p>
+                            <p>Full-stack expert with 8+ years in modern web technologies and cloud architecture.</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card animate-on-scroll">
+                        <div class="team-avatar">ER</div>
+                        <div class="team-info">
+                            <h4>Emma Rodriguez</h4>
+                            <p class="text-muted">UI/UX Designer</p>
+                            <p>Creative designer specializing in user-centered design and interactive experiences.</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-dribbble"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card animate-on-scroll">
+                        <div class="team-avatar">DT</div>
+                        <div class="team-info">
+                            <h4>David Thompson</h4>
+                            <p class="text-muted">DevOps Engineer</p>
+                            <p>Infrastructure specialist focused on scalable cloud solutions and automation.</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-slack"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card animate-on-scroll">
+                        <div class="team-avatar">LC</div>
+                        <div class="team-info">
+                            <h4>Lisa Chen</h4>
+                            <p class="text-muted">Project Manager</p>
+                            <p>Agile expert ensuring seamless project delivery and client satisfaction.</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Choose Your Plan</h2>
+            <p class="section-subtitle animate-on-scroll">Flexible pricing options designed to scale with your business needs and growth ambitions.</p>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card animate-on-scroll">
+                        <div class="mb-4">
+                            <i class="bi bi-rocket-takeoff" style="font-size: 3rem; color: #667eea;"></i>
+                        </div>
+                        <h3>Starter</h3>
+                        <div class="price">$99<small>/month</small></div>
+                        <ul class="list-unstyled my-4">
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>Basic Web Development</li>
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>Responsive Design</li>
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>Email Support</li>
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>Monthly Updates</li>
+                            <li class="py-2"><i class="bi bi-x-circle text-muted me-2"></i>Advanced Analytics</li>
+                        </ul>
+                        <button class="btn btn-outline-primary btn-lg w-100">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card featured animate-on-scroll">
+                        <div class="mb-4">
+                            <i class="bi bi-star-fill" style="font-size: 3rem; color: white;"></i>
+                        </div>
+                        <h3>Professional</h3>
+                        <div class="price">$299<small>/month</small></div>
+                        <ul class="list-unstyled my-4">
+                            <li class="py-2"><i class="bi bi-check-circle me-2"></i>Full-Stack Development</li>
+                            <li class="py-2"><i class="bi bi-check-circle me-2"></i>Mobile Application</li>
+                            <li class="py-2"><i class="bi bi-check-circle me-2"></i>Priority Support</li>
+                            <li class="py-2"><i class="bi bi-check-circle me-2"></i>Advanced Analytics</li>
+                            <li class="py-2"><i class="bi bi-check-circle me-2"></i>Cloud Integration</li>
+                        </ul>
+                        <button class="btn btn-light btn-lg w-100">Most Popular</button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card animate-on-scroll">
+                        <div class="mb-4">
+                            <i class="bi bi-gem" style="font-size: 3rem; color: #667eea;"></i>
+                        </div>
+                        <h3>Enterprise</h3>
+                        <div class="price">$799<small>/month</small></div>
+                        <ul class="list-unstyled my-4">
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>Custom Solutions</li>
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>AI Integration</li>
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>24/7 Dedicated Support</li>
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>Advanced Security</li>
+                            <li class="py-2"><i class="bi bi-check-circle text-success me-2"></i>Unlimited Scaling</li>
+                        </ul>
+                        <button class="btn btn-primary btn-lg w-100">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="animate-on-scroll">
+                        <i class="bi bi-lightning-charge" style="font-size: 4rem; margin-bottom: 2rem; display: block;"></i>
+                        <h2>Ready to Revolutionize Your Business?</h2>
+                        <p class="lead">Join over 1000+ successful companies who have transformed their digital presence and achieved remarkable growth with our innovative solutions.</p>
+                        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                            <button class="btn btn-gradient btn-lg" onclick="startProject()">
+                                <i class="bi bi-rocket me-2"></i>Start Your Project Today
+                            </button>
+                            <button class="btn btn-outline-light btn-lg" onclick="scheduleCall()">
+                                <i class="bi bi-calendar-check me-2"></i>Schedule Free Consultation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-rocket-takeoff me-2"></i>ModernBiz
+                    </h5>
+                    <p class="mb-3">Transforming businesses through innovative technology solutions and exceptional digital experiences that drive sustainable growth.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Web Development</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Mobile Apps</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>UI/UX Design</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Cloud Solutions</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>AI Integration</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Company</h6>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>About Us</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Our Team</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Careers</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Blog</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>News</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Support</h6>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Help Center</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Documentation</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>API Reference</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Community</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right me-2"></i>Status Page</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Contact</h6>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-envelope me-2"></i>hello@modernbiz.com</li>
+                        <li><i class="bi bi-phone me-2"></i>+1 (555) 123-4567</li>
+                        <li><i class="bi bi-geo-alt me-2"></i>123 Business Ave<br>Suite 100, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row align-items-center">
+                
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Crafted with <i class="bi bi-heart-fill text-danger"></i> for exceptional businesses worldwide</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 500);
+            }, 1500);
+            
+            createBubbles();
+            initAnimations();
+        });
+
+        function createBubbles() {
+            const container = document.getElementById('bubbleContainer');
+            setInterval(() => {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 60 + 20;
+                const startPosition = Math.random() * window.innerWidth;
+                const duration = Math.random() * 10 + 10;
+                
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = startPosition + 'px';
+                bubble.style.animationDuration = duration + 's';
+                
+                container.appendChild(bubble);
+                
+                setTimeout(() => {
+                    container.removeChild(bubble);
+                }, duration * 1000);
+            }, 300);
+        }
+
+        function initAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        
+                        const delay = Math.random() * 0.3;
+                        entry.target.style.transitionDelay = delay + 's';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            const statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            if (!counter.classList.contains('counted')) {
+                                counter.classList.add('counted');
+                                animateCounter(counter);
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.stats-counter').forEach(el => {
+                statsObserver.observe(el);
+            });
+        }
+
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.count);
+            const duration = 3000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = Math.floor(current);
+                
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                }
+            }, 16);
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const scrollButton = document.getElementById('scrollToTop');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                scrollButton.classList.add('visible');
+            } else {
+                navbar.classList.remove('scrolled');
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        function playDemo() {
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Product Demo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="p-5">
+                                <i class="bi bi-play-circle" style="font-size: 5rem; color: #667eea;"></i>
+                                <h4 class="mt-3">Interactive Demo Experience</h4>
+                                <p>Experience our cutting-edge solutions through this interactive demonstration.</p>
+                                <div class="progress mt-4">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         style="width: 0%; background: var(--primary-gradient);" 
+                                         id="demoProgress"></div>
+                                </div>
+                                <small class="text-muted mt-2 d-block">Loading demo content...</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+            
+            const progressBar = modal.querySelector('#demoProgress');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                progressBar.style.width = Math.min(progress, 100) + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    modal.querySelector('.modal-body').innerHTML = `
+                        <div class="p-5 text-center">
+                            <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+                            <h4 class="mt-3 text-success">Demo Complete!</h4>
+                            <p>Thank you for viewing our interactive demonstration. Ready to get started?</p>
+                            <button class="btn btn-success btn-lg" onclick="startProject()">Start Your Project</button>
+                        </div>
+                    `;
+                }
+            }, 200);
+            
+            modal.addEventListener('hidden.bs.modal', () => {
+                document.body.removeChild(modal);
+            });
+        }
+
+        function startProject() {
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: var(--primary-gradient); color: white;">
+                            <h5 class="modal-title"><i class="bi bi-rocket-takeoff me-2"></i>Start Your Project</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="projectForm">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="bi bi-person me-2"></i>Full Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="bi bi-envelope me-2"></i>Email Address</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="bi bi-building me-2"></i>Company Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="bi bi-list-task me-2"></i>Project Type</label>
+                                    <select class="form-control">
+                                        <option>Web Development</option>
+                                        <option>Mobile Application</option>
+                                        <option>UI/UX Design</option>
+                                        <option>Cloud Solutions</option>
+                                        <option>AI Integration</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Custom Solution</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="bi bi-currency-dollar me-2"></i>Project Budget</label>
+                                    <select class="form-control">
+                                        <option>$5,000 - $15,000</option>
+                                        <option>$15,000 - $30,000</option>
+                                        <option>$30,000 - $50,000</option>
+                                        <option>$50,000 - $100,000</option>
+                                        <option>$100,000+</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="bi bi-chat-text me-2"></i>Project Description</label>
+                                    <textarea class="form-control" rows="3" placeholder="Tell us about your project..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" onclick="submitProject()">
+                                <i class="bi bi-send me-2"></i>Submit Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+            
+            modal.addEventListener('hidden.bs.modal', () => {
+                document.body.removeChild(modal);
+            });
+        }
+
+        function submitProject() {
+            const submitBtn = event.target;
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Submitted Successfully!';
+                submitBtn.classList.remove('btn-primary');
+                submitBtn.classList.add('btn-success');
+                
+                setTimeout(() => {
+                    const modal = bootstrap.Modal.getInstance(submitBtn.closest('.modal'));
+                    modal.hide();
+                    
+                    showSuccessNotification('Project submitted successfully! We\'ll contact you within 24 hours.');
+                }, 2000);
+            }, 3000);
+        }
+
+        function scheduleCall() {
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: var(--success-gradient); color: white;">
+                            <h5 class="modal-title"><i class="bi bi-calendar-check me-2"></i>Schedule Free Consultation</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Preferred Date</label>
+                                    <input type="date" class="form-control" min="${new Date().toISOString().split('T')[0]}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Preferred Time</label>
+                                    <select class="form-control">
+                                        <option>9:00 AM - 10:00 AM</option>
+                                        <option>10:00 AM - 11:00 AM</option>
+                                        <option>11:00 AM - 12:00 PM</option>
+                                        <option>2:00 PM - 3:00 PM</option>
+                                        <option>3:00 PM - 4:00 PM</option>
+                                        <option>4:00 PM - 5:00 PM</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">What would you like to discuss?</label>
+                                    <textarea class="form-control" rows="3" placeholder="Brief description of your needs..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-success" onclick="confirmSchedule()">
+                                <i class="bi bi-calendar-plus me-2"></i>Schedule Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+            
+            modal.addEventListener('hidden.bs.modal', () => {
+                document.body.removeChild(modal);
+            });
+        }
+
+        function confirmSchedule() {
+            const btn = event.target;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Scheduling...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Scheduled!';
+                
+                setTimeout(() => {
+                    const modal = bootstrap.Modal.getInstance(btn.closest('.modal'));
+                    modal.hide();
+                    
+                    showSuccessNotification('Consultation scheduled successfully! Calendar invite sent to your email.');
+                }, 1500);
+            }, 2500);
+        }
+
+        function showSuccessNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-success alert-dismissible fade show position-fixed';
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                <i class="bi bi-check-circle-fill me-2"></i>
+                ${message}
+                <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('fade-out');
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn') && !e.target.closest('.navbar-toggler') && !e.target.closest('.btn-close')) {
+                const btn = e.target.closest('.btn');
+                if (!btn.classList.contains('processing')) {
+                    btn.classList.add('processing');
+                    
+                    const ripple = document.createElement('span');
+                    ripple.className = 'ripple-effect';
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.6);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    const rect = btn.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                    
+                    btn.style.position = 'relative';
+                    btn.style.overflow = 'hidden';
+                    btn.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                        btn.classList.remove('processing');
+                    }, 600);
+                }
+            }
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .fade-out {
+                opacity: 0 !important;
+                transform: translateX(100%);
+                transition: all 0.3s ease;
+            }
+            
+            .processing {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+        `;
+        document.head.appendChild(style);
+
+        window.addEventListener('beforeunload', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay && loadingOverlay.style.display === 'none') {
+                loadingOverlay.style.display = 'flex';
+                loadingOverlay.style.opacity = '1';
+            }
+        });
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReducedMotion.matches) {
+            document.documentElement.style.setProperty('--transition-smooth', 'none');
+        }
+    </script>
+</body>
+</html>
